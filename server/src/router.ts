@@ -1,4 +1,5 @@
 import express from "express";
+import valid from "./middlewares/valid";
 
 const router = express.Router();
 
@@ -25,8 +26,8 @@ import programActions from "./modules/program/programActions";
 
 router.get("/api/programs", programActions.browse);
 router.get("/api/programs/:id", programActions.read);
-router.post("/api/programs", programActions.add);
-router.put("/api/programs/:id", programActions.edit);
+router.post("/api/programs", valid.validate, programActions.add);
+router.put("/api/programs/:id", valid.validate, programActions.edit);
 router.delete("/api/programs/:id", programActions.destroy);
 
 /* ************************************************************************* */
