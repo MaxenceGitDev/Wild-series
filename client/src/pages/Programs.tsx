@@ -14,7 +14,7 @@ export default function Programs() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3310/api/programs")
+      .get(`${import.meta.env.VITE_API_URL}/api/programs`)
       .then((response) => setPrograms(response.data))
       .catch((error) => {
         console.error("Erreur lors de la récupération des données", error);
